@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default function getFullResponseFromAPI(success) {
-  return new Promise((resolve, reject) => {
+  return Promise((resolve, reject) => {
     if (success === true) {
       resolve({ status: 200, body: 'success' });
     } else {
