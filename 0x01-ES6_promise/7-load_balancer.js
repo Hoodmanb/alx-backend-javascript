@@ -1,7 +1,4 @@
-const loadBalancer = (chinaDownload, USDownload) => {
-  return Promise.race([chinaDownload, USDownload]);
-  .then((response) => {
-    return response;
-  })
+export default function(chinaDownload, USDownload) {
+  return Promise.race([chinaDownload, USDownload])
+  .then((response) => response);
 }
-export default loadBalancer;
