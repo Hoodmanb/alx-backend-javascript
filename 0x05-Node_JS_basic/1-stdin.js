@@ -1,3 +1,4 @@
+/* eslint-disable */
 import readline from 'readline';
 
 const rl = readline.createInterface({
