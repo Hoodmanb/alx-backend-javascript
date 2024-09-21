@@ -1,18 +1,15 @@
 /* eslint-disable */
-const fs = require('fs/promises');
+const fs = require('fs');
 
-const countStudents = async (path) => {
-  try {
-    const data = await fs.readFile(path, 'utf8');
+const countStudents = (path) => new Promise((resolve, reject) => {
+  fs.readFile(path, 'utf8', (err, data) => {
+    if (err) {
+      reject(new Error('Cannot load the database'))
+    }
     const lines = data
       .trim()
       .split('\n')
       .filter((line) => line.trim() !== '');
-
-    if (lines.length <= 1) {
-      console.log('Number of students: 0');
-      return;
-    }
 
     console.log(`Number of students: ${lines.length - 1}`);
 
@@ -42,9 +39,8 @@ const countStudents = async (path) => {
       const value = obj[field];
       console.log(`Number of students in ${field}: ${value.length}. List: ${value.join(', ')}`);
     });
-  } catch (err) {
-    throw new Error('Cannot load the database');
-  }
-};
+    resolve()
+  })
+})
 
 module.exports = countStudents;
