@@ -1,8 +1,8 @@
-const fs = require('fs');
+import fs from 'fs/promises';
 
-const countStudents = (path) => {
+const countStudents = async (path) => {
   try {
-    const data = fs.readFileSync(path, 'utf8');
+    const data = await fs.readFile(path, 'utf8');
     const lines = data.trim().split('\n');
     console.log(`Number of students: ${lines.length - 1}`);
 
@@ -35,4 +35,4 @@ const countStudents = (path) => {
   }
 };
 
-module.exports = countStudents;
+export default countStudents;
