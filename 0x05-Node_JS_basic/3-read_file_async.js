@@ -10,7 +10,7 @@ const countStudents = async (path) => {
 
     if (lines.length <= 1) {
       console.log('Number of students: 0');
-      return Promise.resolve();
+      return;
     }
 
     console.log(`Number of students: ${lines.length - 1}`);
@@ -41,8 +41,6 @@ const countStudents = async (path) => {
       const value = obj[field];
       console.log(`Number of students in ${field}: ${value.length}. List: ${value.join(', ')}`);
     });
-
-    return Promise.resolve();
   } catch (err) {
     throw new Error('Cannot load the database');
   }
