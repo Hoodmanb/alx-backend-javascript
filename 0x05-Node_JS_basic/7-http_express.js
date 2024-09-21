@@ -5,7 +5,7 @@ const db = process.argv.length >= 2 ? process.argv[2] : '';
 const app = express();
 const port = 1245;
 
-const countStudents = (db) => new Promise((resolve, reject) => {
+const countStudents = (path) => new Promise((resolve, reject) => {
   fs.readFile(path, 'utf8', (err, data) => {
     if (err) {
       reject(new Error('Cannot load the database'))
