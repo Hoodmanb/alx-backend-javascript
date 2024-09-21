@@ -35,4 +35,4 @@ const countStudents = async (path) => {
   }
 };
 
-export default countStudents;
+module.exports = countStudents;
