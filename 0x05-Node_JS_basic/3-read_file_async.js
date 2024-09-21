@@ -7,12 +7,11 @@ const countStudents = (path) => new Promise((resolve, reject) => {
       reject(new Error('Cannot load the database'))
     }
     if (data) {
-      const returned = [];
       const lines = data
         .trim()
         .split('\n')
         .filter((line) => line.trim() !== '');
-      returned.push(`Number of students: ${lines.length - 1}`)
+      console.log(`Number of students: ${lines.length - 1}`);
       const students = [];
       const fields = [];
       lines.forEach((line, index) => {
@@ -34,10 +33,9 @@ const countStudents = (path) => new Promise((resolve, reject) => {
       });
       Object.keys(obj).forEach((field) => {
         const value = obj[field];
-        returned.push(`Number of students in ${field}: ${value.length}. List: ${value.join(', ')}`);
+        console.log(`Number of students in ${field}: ${value.length}. List: ${value.join(', ')}`);
       });
-      const toReturn = returned.join('\n')
-      resolve(toReturn)
+      resolve()
     }
   })
 })
